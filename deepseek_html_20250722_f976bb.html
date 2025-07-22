@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just-in-Time: Lean Production</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #2a4c7d, #3a6ea5);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .slide-container {
+            background-color: white;
+            width: 100%;
+            max-width: 1200px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .slide-header {
+            background: linear-gradient(90deg, #0052D4, #4364F7, #6FB1FC);
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .slide-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .slide-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 40px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-top: 5px solid #4364F7;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #0052D4, #6FB1FC);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #0052D4;
+        }
+        
+        .card p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+        
+        .card ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        .card li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        
+        .analogy-section {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
+                         url('https://images.unsplash.com/photo-1579974573715-6a1d6f5f16b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            margin: 0 40px 40px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .analogy-section h2 {
+            font-size: 1.8rem;
+            color: #0052D4;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .analogy-content {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .analogy-text {
+            flex: 1;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .analogy-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .analogy-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .jic-jit-comparison {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            gap: 20px;
+        }
+        
+        .jic, .jit {
+            flex: 1;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .jic {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        }
+        
+        .jit {
+            background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+        }
+        
+        .jic h3, .jit h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .footer {
+            background: #1a2a6c;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, rgba(106, 176, 255, 0.3), rgba(106, 176, 255, 0.7));
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 900px) {
+            .analogy-content {
+                flex-direction: column;
+            }
+            
+            .jic-jit-comparison {
+                flex-direction: column;
+            }
+            
+            .slide-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1>Just-in-Time: Lean Production and Waste Reduction</h1>
+            <p>A strategic approach to manufacturing efficiency and inventory management</p>
+        </div>
+        
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h2>Core Principle</h2>
+                <p>Just-in-Time (JIT) is a method of stock control focused on:</p>
+                <ul>
+                    <li>Avoiding holding stock by getting supplies only when necessary</li>
+                    <li>Producing only when orders are received</li>
+                    <li>Contrasting with traditional Just-in-Case (JIC) method</li>
+                </ul>
+                <div class="jic-jit-comparison">
+                    <div class="jic">
+                        <h3>Just-in-Case (JIC)</h3>
+                        <p>Holding reserves of raw materials and finished products</p>
+                    </div>
+                    <div class="jit">
+                        <h3>Just-in-Time (JIT)</h3>
+                        <p>Minimal inventory with precise timing</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-flag-checkered"></i>
+                </div>
+                <h2>Purpose in Lean Production</h2>
+                <p>As a method of lean production, JIT directly contributes to:</p>
+                <ul>
+                    <li>Significant <span class="highlight">reduction of waste</span> across operations</li>
+                    <li>Enhanced <span class="highlight">operational efficiency</span></li>
+                    <li>Streamlined production processes</li>
+                    <li>Improved resource utilization</li>
+                </ul>
+                <p>JIT aligns with the core philosophy of lean manufacturing by eliminating non-value-adding activities.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h2>Key Benefits</h2>
+                <div style="display: flex; gap: 20px; margin-top: 20px;">
+                    <div style="flex: 1;">
+                        <h3><i class="fas fa-recycle" style="color: #4CAF50;"></i> Reduced Waste</h3>
+                        <p>By not holding buffer stock, JIT eliminates:</p>
+                        <ul>
+                            <li>Waste of storage space</li>
+                            <li>Unnecessary storage facilities</li>
+                            <li>Excess inventory costs</li>
+                        </ul>
+                    </div>
+                    <div style="flex: 1;">
+                        <h3><i class="fas fa-chart-line" style="color: #2196F3;"></i> Increased Efficiency</h3>
+                        <p>JIT prevents capital from being tied up in stock, allowing:</p>
+                        <ul>
+                            <li>Better cash flow management</li>
+                            <li>Reduced storage and insurance costs</li>
+                            <li>Lower payroll for inventory management</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="analogy-section">
+            <h2>The Essence of JIT</h2>
+            <div class="analogy-content">
+                <div class="analogy-text">
+                    <p><strong>JIT aims to synchronize production with demand</strong>, ensuring that materials arrive and products are made exactly when needed, rather than in anticipation of future demand.</p>
+                    
+                    <p style="margin-top: 20px; font-style: italic; background: rgba(255, 255, 255, 0.8); padding: 15px; border-left: 4px solid #4364F7;">
+                        "Think of JIT like a precision relay race where each runner (supplier/production stage) passes the baton (materials/partially finished product) to the next runner just as they are ready to receive it, without any runner waiting unnecessarily or holding onto the baton for too long. This ensures a smooth, continuous flow with no wasted effort, no unnecessary stockpiling of batons, and maximum speed in completing the race."
+                    </p>
+                </div>
+                <div class="analogy-image">
+                    <img src="https://images.unsplash.com/photo-1517436073-3d3ca1f081d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Relay race analogy">
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Just-in-Time Production | Lean Manufacturing Principles | Waste Reduction Strategies</p>
+        </div>
+    </div>
+</body>
+</html>
