@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cradle-to-Cradle: The Circular Production Concept</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #e6f7ee 0%, #d1ede1 100%);
+            color: #2c3e50;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .slide-container {
+            width: 100%;
+            max-width: 1200px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .slide-header {
+            background: linear-gradient(120deg, #1a936f 0%, #0d5d46 100%);
+            color: white;
+            padding: 40px 50px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+            pointer-events: none;
+        }
+        
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            opacity: 0.9;
+        }
+        
+        .concept-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0 30px;
+            padding: 0 20px;
+        }
+        
+        .concept-item {
+            text-align: center;
+            padding: 0 30px;
+            position: relative;
+        }
+        
+        .concept-item:not(:last-child)::after {
+            content: "→";
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.8rem;
+            color: rgba(255,255,255,0.5);
+        }
+        
+        .concept-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #88d498;
+        }
+        
+        .concept-label {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 40px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            border-top: 4px solid #1a936f;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        .card-header {
+            padding: 25px 25px 15px;
+            display: flex;
+            align-items: center;
+            background: rgba(26, 147, 111, 0.03);
+        }
+        
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: #e6f7ee;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 18px;
+            flex-shrink: 0;
+        }
+        
+        .card-icon i {
+            font-size: 1.8rem;
+            color: #1a936f;
+        }
+        
+        .card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #0d5d46;
+        }
+        
+        .card-content {
+            padding: 0 25px 25px;
+            flex-grow: 1;
+        }
+        
+        .card-content p {
+            margin-bottom: 18px;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+        
+        ul.card-list {
+            list-style-type: none;
+            padding-left: 5px;
+        }
+        
+        ul.card-list li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+        
+        ul.card-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #1a936f;
+            font-size: 1.8rem;
+            line-height: 1;
+        }
+        
+        .example-card {
+            grid-column: span 2;
+            display: flex;
+            flex-direction: row;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .example-content {
+            flex: 1;
+            padding: 25px;
+        }
+        
+        .example-image {
+            flex: 0 0 40%;
+            background: url('https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80') center/cover;
+            min-height: 250px;
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 20px;
+            background: #f9fdfb;
+            border-left: 4px solid #88d498;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: #e6f7ee;
+            color: #0d5d46;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 5px 0;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px 0 30px;
+            color: #1a936f;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-top: 1px solid rgba(26, 147, 111, 0.1);
+            margin: 0 40px;
+        }
+        
+        .eco-system {
+            display: inline-block;
+            background: rgba(26, 147, 111, 0.1);
+            padding: 8px 20px;
+            border-radius: 30px;
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 900px) {
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .example-card {
+                grid-column: span 1;
+                flex-direction: column;
+            }
+            
+            .example-image {
+                min-height: 200px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .concept-item {
+                padding: 0 15px;
+            }
+            
+            .concept-item:not(:last-child)::after {
+                right: -5px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .slide-header {
+                padding: 30px 20px;
+            }
+            
+            .cards-container {
+                padding: 25px 20px;
+            }
+            
+            .concept-container {
+                flex-wrap: wrap;
+            }
+            
+            .concept-item {
+                width: 50%;
+                margin-bottom: 20px;
+            }
+            
+            .concept-item:not(:last-child)::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1>Cradle-to-Cradle</h1>
+            <div class="subtitle">The Circular Production Concept</div>
+            
+            <div class="concept-container">
+                <div class="concept-item">
+                    <div class="concept-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <div class="concept-label">Production</div>
+                </div>
+                <div class="concept-item">
+                    <div class="concept-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="concept-label">Usage</div>
+                </div>
+                <div class="concept-item">
+                    <div class="concept-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <div class="concept-label">Recycling</div>
+                </div>
+                <div class="concept-item">
+                    <div class="concept-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="concept-label">New Life</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-arrows-alt-h"></i>
+                    </div>
+                    <h3 class="card-title">Core Principle</h3>
+                </div>
+                <div class="card-content">
+                    <p>The term "cradle" refers to the production phase of a product. "Cradle-to-cradle" transforms the linear "cradle-to-grave" model into a circular system.</p>
+                    <p>Products are designed so that after use, materials are entirely recycled to create new products - eliminating waste through continuous material cycling.</p>
+                    <div class="quote">
+                        "Like a forest ecosystem: fallen leaves decompose to nourish new growth in a regenerative cycle."
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="card-title">Current Status & Vision</h3>
+                </div>
+                <div class="card-content">
+                    <p>Currently implemented in limited products like certain clothing and office furniture. The concept is still in its infancy.</p>
+                    <p>The Cradle to Cradle Products Innovation Institute launched in 2012, with criteria still evolving.</p>
+                    <p>Growing socio-cultural momentum for sustainability is increasing pressure on companies to design recycled and recyclable products.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="card-title">Certification Criteria</h3>
+                </div>
+                <div class="card-content">
+                    <p>To receive official C2C certification, products must meet:</p>
+                    <ul class="card-list">
+                        <li><strong>Material Reutilization:</strong> Strict recycling processes</li>
+                        <li><strong>Energy for Recycling:</strong> Assessment with renewable energy preference</li>
+                        <li><strong>Water Use:</strong> Evaluation of water consumption</li>
+                        <li><strong>Corporate Social Responsibility:</strong> Fair labor practices and ethics</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card example-card">
+                <div class="example-content">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <h3 class="card-title">Illustrative Example</h3>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Ford Model U Concept Car (2003)</strong></p>
+                        <p>Designed for the 21st century with recycling and eco-friendliness as core principles:</p>
+                        <p>
+                            <span class="tag">Sunflower-seed engine oil</span>
+                            <span class="tag">Hemp construction</span>
+                            <span class="tag">Soy-based materials</span>
+                        </p>
+                        <p>Though never mass-produced, it remains a powerful example of cradle-to-cradle principles applied to complex manufacturing.</p>
+                    </div>
+                </div>
+                <div class="example-image"></div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Cradle-to-Cradle aims to eliminate waste by design, treating every material as a valuable resource for endless cycling</p>
+            <div class="eco-system">Inspired by nature's regenerative ecosystems</div>
+        </div>
+    </div>
+</body>
+</html>
