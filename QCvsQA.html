@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quality Control vs. Quality Assurance</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #343a40;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .slide-container {
+            width: 100%;
+            max-width: 1300px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .slide-header {
+            background: linear-gradient(120deg, #495057 0%, #212529 100%);
+            color: white;
+            padding: 40px 50px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+            pointer-events: none;
+        }
+        
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            opacity: 0.9;
+        }
+        
+        .comparison-container {
+            display: flex;
+            padding: 40px;
+            gap: 30px;
+        }
+        
+        .column {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .column:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .qc-header {
+            background: linear-gradient(120deg, #e63946 0%, #d00000 100%);
+        }
+        
+        .qa-header {
+            background: linear-gradient(120deg, #2a9d8f 0%, #1d7a6b 100%);
+        }
+        
+        .column-header {
+            padding: 25px 30px;
+            color: white;
+            text-align: center;
+        }
+        
+        .column-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .column-title i {
+            margin-right: 15px;
+            font-size: 2rem;
+        }
+        
+        .column-subtitle {
+            font-size: 1.1rem;
+            font-weight: 300;
+            max-width: 500px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .column-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .aspect-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid;
+        }
+        
+        .qc-card {
+            border-left-color: #e63946;
+        }
+        
+        .qa-card {
+            border-left-color: #2a9d8f;
+        }
+        
+        .aspect-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .aspect-title i {
+            margin-right: 10px;
+            width: 30px;
+            text-align: center;
+        }
+        
+        .aspect-content {
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+        
+        .analogy-section {
+            background: linear-gradient(rgba(33, 37, 41, 0.03), rgba(33, 37, 41, 0.03)), 
+                        url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80') center/cover;
+            padding: 50px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .analogy-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        .analogy-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .analogy-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+        
+        .analogy-columns {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        .analogy-column {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            border-top: 4px solid;
+        }
+        
+        .analogy-qc {
+            border-top-color: #e63946;
+        }
+        
+        .analogy-qa {
+            border-top-color: #2a9d8f;
+        }
+        
+        .analogy-column-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .analogy-column-title i {
+            margin-right: 10px;
+        }
+        
+        .analogy-column-content {
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #495057;
+            font-weight: 600;
+            font-size: 1.1rem;
+            background: #f8f9fa;
+        }
+        
+        .shift-highlight {
+            display: inline-block;
+            background: #212529;
+            color: white;
+            padding: 8px 25px;
+            border-radius: 30px;
+            margin-top: 15px;
+            font-weight: 700;
+        }
+        
+        @media (max-width: 1000px) {
+            .comparison-container {
+                flex-direction: column;
+            }
+            
+            .analogy-columns {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2.3rem;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .slide-header {
+                padding: 30px 20px;
+            }
+            
+            .comparison-container, .analogy-section {
+                padding: 25px 20px;
+            }
+            
+            .analogy-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1>Quality Control vs. Quality Assurance</h1>
+            <div class="subtitle">The Foundational Shift in Quality Management</div>
+        </div>
+        
+        <div class="comparison-container">
+            <div class="column">
+                <div class="column-header qc-header">
+                    <div class="column-title">
+                        <i class="fas fa-search"></i> Quality Control (QC)
+                    </div>
+                    <div class="column-subtitle">Reactive approach: Inspecting quality after production</div>
+                </div>
+                <div class="column-content">
+                    <div class="aspect-card qc-card">
+                        <div class="aspect-title">
+                            <i class="fas fa-cogs"></i> Concept
+                        </div>
+                        <div class="aspect-content">
+                            Quality is "controlled" by one person inspecting finished products after production. Checks are performed to ensure products meet desired quality levels.
+                        </div>
+                    </div>
+                    
+                    <div class="aspect-card qc-card">
+                        <div class="aspect-title">
+                            <i class="fas fa-money-bill-wave"></i> Costs
+                        </div>
+                        <div class="aspect-content">
+                            Accepts a percentage of rejects (e.g., 2% failure rate). This approach leads to wasteful production and rework costs.
+                        </div>
+                    </div>
+                    
+                    <div class="aspect-card qc-card">
+                        <div class="aspect-title">
+                            <i class="fas fa-industry"></i> Processes
+                        </div>
+                        <div class="aspect-content">
+                            Rarely halts production due to cost concerns. Focuses only on the immediate task with no consideration for suppliers or after-sales service.
+                        </div>
+                    </div>
+                    
+                    <div class="aspect-card qc-card">
+                        <div class="aspect-title">
+                            <i class="fas fa-users"></i> People
+                        </div>
+                        <div class="aspect-content">
+                            Quality is one person's responsibility. Associated with autocratic leadership and top-down communication in a "role culture".
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="column-header qa-header">
+                    <div class="column-title">
+                        <i class="fas fa-shield-alt"></i> Quality Assurance (QA)
+                    </div>
+                    <div class="column-subtitle">Proactive approach: Building quality into every process</div>
+                </div>
+                <div class="column-content">
+                    <div class="aspect-card qa-card">
+                        <div class="aspect-title">
+                            <i class="fas fa-cogs"></i> Concept
+                        </div>
+                        <div class="aspect-content">
+                            Quality is "assured" throughout the organization. A system of setting and monitoring quality standards across the entire production process.
+                        </div>
+                    </div>
+                    
+                    <div class="aspect-card qa-card">
+                        <div class="aspect-title">
+                            <i class="fas fa-money-bill-wave"></i> Costs
+                        </div>
+                        <div class="aspect-content">
+                            Zero rejects expected. Aligns with lean production principles to eliminate waste and reduce costs long-term.
+                        </div>
+                    </div>
+                    
+                    <div class="aspect-card qa-card">
+                        <div class="aspect-title">
+                            <i class="fas fa-industry"></i> Processes
+                        </div>
+                        <div class="aspect-content">
+                            Halts production to fix errors when necessary. Considers suppliers and after-sales service with a holistic view of the production chain.
+                        </div>
+                    </div>
+                    
+                    <div class="aspect-card qa-card">
+                        <div class="aspect-title">
+                            <i class="fas fa-users"></i> People
+                        </div>
+                        <div class="aspect-content">
+                            Quality is the team's responsibility (through "quality circles"). Fosters a "total quality culture" with democratic leadership and 360° communication.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="analogy-section">
+            <div class="analogy-content">
+                <div class="analogy-title">The House Building Analogy</div>
+                
+                <div class="analogy-columns">
+                    <div class="analogy-column analogy-qc">
+                        <div class="analogy-column-title">
+                            <i class="fas fa-home"></i> Quality Control Approach
+                        </div>
+                        <div class="analogy-column-content">
+                            <p>Inspecting the finished house for flaws:</p>
+                            <ul style="text-align: left; margin: 20px; list-style-type: none;">
+                                <li style="margin-bottom: 15px; position: relative; padding-left: 30px;">
+                                    <i class="fas fa-check-circle" style="color: #e63946; position: absolute; left: 0; top: 5px;"></i>
+                                    Checking if paint is even
+                                </li>
+                                <li style="margin-bottom: 15px; position: relative; padding-left: 30px;">
+                                    <i class="fas fa-check-circle" style="color: #e63946; position: absolute; left: 0; top: 5px;"></i>
+                                    Verifying doors close properly
+                                </li>
+                                <li style="margin-bottom: 15px; position: relative; padding-left: 30px;">
+                                    <i class="fas fa-check-circle" style="color: #e63946; position: absolute; left: 0; top: 5px;"></i>
+                                    Testing plumbing after installation
+                                </li>
+                            </ul>
+                            <p>Problems are fixed after construction is complete.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="analogy-column analogy-qa">
+                        <div class="analogy-column-title">
+                            <i class="fas fa-tools"></i> Quality Assurance Approach
+                        </div>
+                        <div class="analogy-column-content">
+                            <p>Inspecting at every stage of construction:</p>
+                            <ul style="text-align: left; margin: 20px; list-style-type: none;">
+                                <li style="margin-bottom: 15px; position: relative; padding-left: 30px;">
+                                    <i class="fas fa-check-circle" style="color: #2a9d8f; position: absolute; left: 0; top: 5px;"></i>
+                                    Checking foundation as it's poured
+                                </li>
+                                <li style="margin-bottom: 15px; position: relative; padding-left: 30px;">
+                                    <i class="fas fa-check-circle" style="color: #2a9d8f; position: absolute; left: 0; top: 5px;"></i>
+                                    Verifying lumber before framing
+                                </li>
+                                <li style="margin-bottom: 15px; position: relative; padding-left: 30px;">
+                                    <i class="fas fa-check-circle" style="color: #2a9d8f; position: absolute; left: 0; top: 5px;"></i>
+                                    Ensuring electrical wiring before walls close
+                                </li>
+                            </ul>
+                            <p>Prevents flaws from occurring during construction.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>The shift from QC to QA requires a "total quality cultural shift" - difficult and costly short-term, but beneficial long-term</p>
+            <div class="shift-highlight">From reactive inspection to proactive prevention</div>
+        </div>
+    </div>
+</body>
+</html>
