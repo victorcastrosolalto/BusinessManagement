@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamics of Product Quality Perception</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e1ebf7 100%);
+            color: #2c3e50;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .slide-container {
+            width: 100%;
+            max-width: 1200px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .slide-header {
+            background: linear-gradient(120deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 40px 50px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+            pointer-events: none;
+        }
+        
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto 25px;
+            opacity: 0.9;
+        }
+        
+        .quality-attributes {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .attribute {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            padding: 12px 25px;
+            display: flex;
+            align-items: center;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+        
+        .attribute:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
+        }
+        
+        .attribute-icon {
+            font-size: 1.4rem;
+            margin-right: 12px;
+            color: #aed6f1;
+        }
+        
+        .attribute-label {
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+        
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 40px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            border-top: 4px solid #3498db;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        .card-header {
+            padding: 25px 25px 15px;
+            display: flex;
+            align-items: center;
+            background: rgba(52, 152, 219, 0.03);
+        }
+        
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: #e1ebf7;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 18px;
+            flex-shrink: 0;
+        }
+        
+        .card-icon i {
+            font-size: 1.8rem;
+            color: #3498db;
+        }
+        
+        .card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        
+        .card-content {
+            padding: 0 25px 25px;
+            flex-grow: 1;
+        }
+        
+        .card-content p {
+            margin-bottom: 18px;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+        
+        ul.card-list {
+            list-style-type: none;
+            padding-left: 5px;
+        }
+        
+        ul.card-list li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+        
+        ul.card-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #3498db;
+            font-size: 1.8rem;
+            line-height: 1;
+        }
+        
+        .analogy-card {
+            grid-column: span 2;
+            display: flex;
+            flex-direction: row;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .analogy-content {
+            flex: 1;
+            padding: 25px;
+        }
+        
+        .analogy-image {
+            flex: 0 0 40%;
+            background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)), 
+                        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80') center/cover;
+            min-height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .analogy-image h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .analogy-image p {
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 20px;
+            background: #f8faff;
+            border-left: 4px solid #aed6f1;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: #e1ebf7;
+            color: #2c3e50;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 5px 0;
+        }
+        
+        .perception-scale {
+            display: flex;
+            justify-content: space-between;
+            background: #f0f7ff;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .scale-item {
+            text-align: center;
+            flex: 1;
+            padding: 10px;
+        }
+        
+        .scale-icon {
+            font-size: 2rem;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+        
+        .scale-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px 0 30px;
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-top: 1px solid rgba(52, 152, 219, 0.1);
+            margin: 0 40px;
+        }
+        
+        .highlight {
+            display: inline-block;
+            background: rgba(52, 152, 219, 0.1);
+            padding: 8px 20px;
+            border-radius: 30px;
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 900px) {
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .analogy-card {
+                grid-column: span 1;
+                flex-direction: column;
+            }
+            
+            .analogy-image {
+                min-height: 200px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .quality-attributes {
+                gap: 10px;
+            }
+            
+            .attribute {
+                padding: 10px 15px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .slide-header {
+                padding: 30px 20px;
+            }
+            
+            .cards-container {
+                padding: 25px 20px;
+            }
+            
+            .quality-attributes {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1>The Dynamics of Product Quality Perception</h1>
+            <div class="subtitle">How Consumers Interpret and Value Quality</div>
+            
+            <div class="quality-attributes">
+                <div class="attribute">
+                    <div class="attribute-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="attribute-label">Reliability & Safety</div>
+                </div>
+                <div class="attribute">
+                    <div class="attribute-icon">
+                        <i class="fas fa-hourglass-half"></i>
+                    </div>
+                    <div class="attribute-label">Durability</div>
+                </div>
+                <div class="attribute">
+                    <div class="attribute-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="attribute-label">Innovation</div>
+                </div>
+                <div class="attribute">
+                    <div class="attribute-icon">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <div class="attribute-label">Value for Money</div>
+                </div>
+                <div class="attribute">
+                    <div class="attribute-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="attribute-label">Brand Perception</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="card-title">Perception vs Reality</h3>
+                </div>
+                <div class="card-content">
+                    <p>A product doesn't need to be objectively "high-quality" to drive sales or brand loyalty.</p>
+                    <p>Consumer perception of quality is often more important than actual quality metrics.</p>
+                    <div class="quote">
+                        "What customers believe about your product matters more than its technical specifications."
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 class="card-title">External Influences</h3>
+                </div>
+                <div class="card-content">
+                    <p>External factors significantly shape quality perception:</p>
+                    <ul class="card-list">
+                        <li><strong>Rankings & Awards:</strong> "Top" lists influence perception regardless of objective superiority</li>
+                        <li><strong>Brand Image:</strong> Luxury vs value positioning affects perceived quality</li>
+                        <li><strong>Price Correlation:</strong> Quality perception doesn't always correlate with price</li>
+                    </ul>
+                    <div class="perception-scale">
+                        <div class="scale-item">
+                            <div class="scale-icon">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                            <div class="scale-label">Luxury Brands</div>
+                        </div>
+                        <div class="scale-item">
+                            <div class="scale-icon">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <div class="scale-label">Mid-Range</div>
+                        </div>
+                        <div class="scale-item">
+                            <div class="scale-icon">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="scale-label">Value Brands</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="card-title">Quality Certification</h3>
+                </div>
+                <div class="card-content">
+                    <p>Certifications like ISO 9001 serve as powerful quality signals:</p>
+                    <ul class="card-list">
+                        <li>Demonstrates commitment to quality management</li>
+                        <li>Builds trust with stakeholders</li>
+                        <li>Provides competitive differentiation</li>
+                        <li>Validates processes and standards</li>
+                    </ul>
+                    <p>Companies prominently display certifications to influence perception.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="card-title">Business Impact</h3>
+                </div>
+                <div class="card-content">
+                    <p>Perceived quality directly affects business outcomes:</p>
+                    <p>
+                        <span class="tag">Increased Sales</span>
+                        <span class="tag">Repeat Customers</span>
+                        <span class="tag">Premium Pricing</span>
+                        <span class="tag">Cost Reduction</span>
+                    </p>
+                    <div class="quote">
+                        "When products are perceived as 'medium quality' without differentiation, it becomes a strategic weakness requiring intervention."
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card analogy-card">
+                <div class="analogy-content">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3 class="card-title">The Restaurant Analogy</h3>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Quality perception varies by context and expectations:</strong></p>
+                        <p>A Michelin-starred restaurant represents objective high quality with premium ingredients and techniques.</p>
+                        <p>A local diner offers perceived quality through:</p>
+                        <ul class="card-list">
+                            <li>Reliability and consistency</li>
+                            <li>Safety and comfort</li>
+                            <li>Exceptional value for money</li>
+                            <li>Meeting specific customer expectations</li>
+                        </ul>
+                        <p>Both can be perceived as "quality" depending on customer values and context.</p>
+                    </div>
+                </div>
+                <div class="analogy-image">
+                    <div>
+                        <h3>Quality is Contextual</h3>
+                        <p>What matters isn't absolute quality, but how well the experience matches customer expectations in their specific context.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Quality perception is multi-faceted, shaped by both product attributes and psychological factors</p>
+            <div class="highlight">Success comes from aligning perception with target customer expectations</div>
+        </div>
+    </div>
+</body>
+</html>
