@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Society: Networks & The Internet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0c2461, #1e3799, #4a69bd);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .slide-container {
+            width: 90%;
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .slide-header {
+            background: linear-gradient(to right, #2c3e50, #4a69bd);
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            font-weight: 300;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-container {
+            padding: 40px;
+        }
+        
+        .core-concept {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .core-concept h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        
+        .core-concept p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: #444;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            padding: 25px;
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+        
+        .card-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #444;
+            flex-grow: 1;
+        }
+        
+        .example {
+            background: #f1f8ff;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+            font-style: italic;
+            margin-top: auto;
+        }
+        
+        .analogy-container {
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        
+        .analogy-icon {
+            font-size: 4rem;
+            color: #e74c3c;
+            flex-shrink: 0;
+        }
+        
+        .analogy-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .analogy-content p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: #444;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: #2c3e50;
+            color: white;
+            font-size: 1.1rem;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+            padding: 0 5px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .analogy-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1>Networks & The Internet</h1>
+            <p class="subtitle">Foundations of Digital Society</p>
+        </div>
+        
+        <div class="content-container">
+            <div class="core-concept">
+                <h2><i class="fas fa-brain"></i> Core Understanding</h2>
+                <p>Networks and the internet are the fundamental infrastructure of digital society, profoundly impacting our daily lives. By the end of this unit, you should understand their essential nature, evolution, and dual impact on modern life.</p>
+            </div>
+            
+            <div class="cards-container">
+                <!-- Card 1 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3 class="card-title">Connectivity & Distributed Systems</h3>
+                    </div>
+                    <div class="card-content">
+                        <p><span class="highlight">Networks connect computers, people, and communities</span>, enabling data and information to be created, accessed, and shared in a distributed manner. Information isn't stored in one central location but is spread across various connected devices, allowing for widespread access and collaboration.</p>
+                        <div class="example">
+                            <i class="fas fa-lightbulb"></i> Without a school Wi-Fi network, accessing lesson resources, uploading homework, or searching for assignment information would be impossible. This highlights our dependency on these connections.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="card-title">Evolution of Digital Society</h3>
+                    </div>
+                    <div class="card-content">
+                        <p><span class="highlight">Networks and the internet are defining features of digital society</span> that have evolved over time. They are not static technologies but have continuously developed, shaping how we interact and live.</p>
+                        <p>We'll explore network technologies, their configuration, the internet, and the World Wide Web. We'll also examine whether Sir Tim Berners-Lee's vision for the World Wide Web is being met in today's digital landscape.</p>
+                        <div class="example">
+                            <i class="fas fa-history"></i> From ARPANET to 5G, the evolution of networking technologies has transformed society at an unprecedented pace.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3 class="card-title">Opportunities & Dilemmas</h3>
+                    </div>
+                    <div class="card-content">
+                        <p><span class="highlight">Networks and the internet present significant opportunities and dilemmas</span> for life in digital society. While they offer immense benefits, they also introduce challenges and risks that need to be considered.</p>
+                        <p>Our daily lives are profoundly affected by networks from the moment we wake up until we charge our phones at night. This ubiquitous presence makes our lives dependent on various networks for education, communication, work, and entertainment.</p>
+                        <div class="example">
+                            <i class="fas fa-exclamation-triangle"></i> Issues like privacy concerns, digital divide, and cybersecurity threats represent the dilemmas we face in our networked society.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="analogy-container">
+                <div class="analogy-icon">
+                    <i class="fas fa-road"></i>
+                </div>
+                <div class="analogy-content">
+                    <h3>The Highway System Analogy</h3>
+                    <p>Think of networks and the internet as a vast, intricate highway system. The "Core Understanding" is like grasping why this highway system exists: it connects everyone and everything, has been built and expanded over many years, and while it brings incredible opportunities for travel and commerce, it also comes with traffic jams and safety concerns that need to be managed.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            Digital Society Unit: Networks & The Internet | Understanding Our Connected World
+        </div>
+    </div>
+</body>
+</html>
