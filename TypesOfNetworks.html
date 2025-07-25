@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Types of Computing Networks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #2c3e50, #4a69bd);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .slide-container {
+            width: 95%;
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .slide-header {
+            background: linear-gradient(to right, #2c3e50, #1a2a6c);
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.1) 0%, transparent 20%);
+        }
+        
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            font-weight: 300;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .content-container {
+            padding: 40px;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #f0f7ff;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid #4a69bd;
+        }
+        
+        .intro p {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            color: #2c3e50;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            color: #1a2a6c;
+            font-size: 2.2rem;
+            margin: 40px 0 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #4a69bd;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .section-title i {
+            background: #4a69bd;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+        
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border-top: 5px solid #4a69bd;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            padding: 25px 25px 15px;
+            color: #1a2a6c;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .card-icon {
+            font-size: 2.2rem;
+            width: 70px;
+            height: 70px;
+            background: rgba(74, 105, 189, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a2a6c;
+            flex-shrink: 0;
+        }
+        
+        .card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+        
+        .card-content {
+            padding: 0 25px 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #444;
+        }
+        
+        .examples {
+            background: #f0f7ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-size: 1rem;
+        }
+        
+        .examples i {
+            color: #4a69bd;
+            margin-right: 8px;
+        }
+        
+        .network-scale {
+            background: linear-gradient(to right, #e9f0fa, #d5e3f8);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .scale-title {
+            font-family: 'Montserrat', sans-serif;
+            color: #1a2a6c;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+        }
+        
+        .scale-visual {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            height: 200px;
+            margin: 0 auto;
+            max-width: 900px;
+        }
+        
+        .network-type {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+        
+        .network-bar {
+            width: 80%;
+            margin: 0 auto;
+            background: linear-gradient(to top, #4a69bd, #1a2a6c);
+            border-radius: 10px 10px 0 0;
+            position: relative;
+        }
+        
+        .pan-bar { height: 40px; }
+        .lan-bar { height: 80px; }
+        .man-bar { height: 130px; }
+        .wan-bar { height: 180px; }
+        
+        .network-label {
+            font-weight: 600;
+            margin-top: 10px;
+            color: #1a2a6c;
+        }
+        
+        .network-desc {
+            font-size: 0.9rem;
+            margin-top: 5px;
+            color: #2c3e50;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .comparison-table th {
+            background: #1a2a6c;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background: #f8fafd;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 25px;
+            background: #2c3e50;
+            color: white;
+            font-size: 1.1rem;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+            padding: 0 5px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .scale-visual {
+                flex-direction: column;
+                height: auto;
+                align-items: center;
+                gap: 30px;
+            }
+            
+            .network-type {
+                width: 100%;
+            }
+            
+            .network-bar {
+                height: 40px !important;
+                width: 100%;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1>Types of Computing Networks</h1>
+            <p class="subtitle">Understanding Network Classification by Size, Connectivity, and Data Sharing</p>
+        </div>
+        
+        <div class="content-container">
+            <div class="intro">
+                <p>Networks can be categorized based on their <span class="highlight">physical size</span>, <span class="highlight">type of connectivity</span>, and <span class="highlight">how data is shared</span>. Understanding these classifications helps us design, implement, and manage effective network systems.</p>
+            </div>
+            
+            <h2 class="section-title">
+                <i class="fas fa-ruler-combined"></i>
+                Networks by Size
+            </h2>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3 class="card-title">Personal Area Network (PAN)</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The smallest network type, connecting devices in close proximity to an individual.</p>
+                        <div class="examples">
+                            <i class="fas fa-lightbulb"></i> <strong>Example:</strong> A phone wirelessly syncing data to a health watch or wireless headphones connecting to a smartphone.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3 class="card-title">Local Area Network (LAN)</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Connects computers or devices on a single site, from a home network to large offices or schools.</p>
+                        <p>Facilitates sharing resources like printers, centralized data stores, and internet access.</p>
+                        <div class="examples">
+                            <i class="fas fa-lightbulb"></i> <strong>Example:</strong> A school network connecting classrooms, offices, and computer labs.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-city"></i>
+                        </div>
+                        <h3 class="card-title">Metropolitan Area Network (MAN)</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Covers a larger geographical area, typically a city (5-50 km).</p>
+                        <div class="examples">
+                            <i class="fas fa-lightbulb"></i> <strong>Example:</strong> New York City provides "free Wi-Fi to all residents as well as wirelessly connecting traffic lights and parking meters."
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <h3 class="card-title">Wide Area Network (WAN)</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The largest networks spanning wide geographical areas, connecting multiple LANs.</p>
+                        <p>The internet is the "largest WAN accessible to the public."</p>
+                        <div class="examples">
+                            <i class="fas fa-lightbulb"></i> <strong>Example:</strong> A multinational corporation connecting offices worldwide using VPNs or leased lines.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="network-scale">
+                <h3 class="scale-title">Network Size Comparison</h3>
+                <div class="scale-visual">
+                    <div class="network-type">
+                        <div class="network-bar pan-bar"></div>
+                        <div class="network-label">PAN</div>
+                        <div class="network-desc">Personal Area</div>
+                    </div>
+                    <div class="network-type">
+                        <div class="network-bar lan-bar"></div>
+                        <div class="network-label">LAN</div>
+                        <div class="network-desc">Local Area</div>
+                    </div>
+                    <div class="network-type">
+                        <div class="network-bar man-bar"></div>
+                        <div class="network-label">MAN</div>
+                        <div class="network-desc">Metropolitan</div>
+                    </div>
+                    <div class="network-type">
+                        <div class="network-bar wan-bar"></div>
+                        <div class="network-label">WAN</div>
+                        <div class="network-desc">Wide Area</div>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 class="section-title">
+                <i class="fas fa-plug"></i>
+                Types of Connectivity
+            </h2>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-ethernet"></i>
+                        </div>
+                        <h3 class="card-title">Wired Networks</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Traditionally use copper Ethernet cables, now increasingly fiber-optic cables for better speed and distance.</p>
+                        <p>Valued for their "reliability, faster speeds and ability to transfer data more securely."</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <h3 class="card-title">Wireless Networks</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Utilize Wi-Fi technology and radio signals, offering ease of setup and flexibility.</p>
+                        <p>Devices connect via wireless access points (WAPs) or wireless routers, which are still connected to a wired backbone.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <h3 class="card-title">Cloud Networks</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Integrate network capabilities on public or private cloud platforms.</p>
+                        <p>Allows for off-site management of the network or data, simplifying deployment, saving costs, and enabling scalability.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 class="section-title">
+                <i class="fas fa-share-alt"></i>
+                Sharing Data
+            </h2>
+            
+            <table class="comparison-table">
+                <tr>
+                    <th style="width: 30%;">Network Type</th>
+                    <th>Description</th>
+                    <th>Advantages</th>
+                    <th>Disadvantages</th>
+                </tr>
+                <tr>
+                    <td><strong>Client-Server Networks</strong></td>
+                    <td>Data is stored centrally on a server, and client devices access it</td>
+                    <td>
+                        <i class="fas fa-check-circle" style="color: #2ecc71;"></i> Centralized security and backup<br>
+                        <i class="fas fa-check-circle" style="color: #2ecc71;"></i> Easier management
+                    </td>
+                    <td>
+                        <i class="fas fa-exclamation-triangle" style="color: #e74c3c;"></i> Requires expert staff<br>
+                        <i class="fas fa-exclamation-triangle" style="color: #e74c3c;"></i> Needs adequate bandwidth
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Peer-to-Peer (P2P) Networks</strong></td>
+                    <td>Decentralized, with each computer equally responsible for storing and sharing data</td>
+                    <td>
+                        <i class="fas fa-check-circle" style="color: #2ecc71;"></i> Easy to set up<br>
+                        <i class="fas fa-check-circle" style="color: #2ecc71;"></i> Not dependent on a single server<br>
+                        <i class="fas fa-check-circle" style="color: #2ecc71;"></i> Efficient for large file sharing
+                    </td>
+                    <td>
+                        <i class="fas fa-exclamation-triangle" style="color: #e74c3c;"></i> Harder to manage securely<br>
+                        <i class="fas fa-exclamation-triangle" style="color: #e74c3c;"></i> Can be used for illegal content<br>
+                        <i class="fas fa-exclamation-triangle" style="color: #e74c3c;"></i> "Makes it very difficult for authorities to shut them down"
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="footer">
+            Digital Society: Networks & The Internet | Understanding Network Classifications
+        </div>
+    </div>
+</body>
+</html>
