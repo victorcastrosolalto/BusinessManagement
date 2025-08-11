@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Characteristics of Computing Networks</title>
+    <!-- Use a simple CDN for Tailwind CSS for quick styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font for a clean, modern look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Style for the emoji/icon to ensure it's large and stands out */
+        .card-icon {
+            font-size: 2.5rem;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 flex items-center justify-center p-4 min-h-screen">
+
+    <!-- Main container for the entire slide content -->
+    <div class="w-full max-w-6xl p-8 bg-white rounded-xl shadow-2xl">
+
+        <!-- Header section -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-extrabold text-gray-800 tracking-tight leading-tight">
+                4. Characteristics of Computing Networks 📏💨🔒
+            </h1>
+            <p class="mt-4 text-xl text-gray-500">
+                Standards, capacity, and security are key considerations for network functionality.
+            </p>
+        </div>
+
+        <!-- Grid layout for the component cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Section: Standards and Protocols -->
+            <div class="md:col-span-2 lg:col-span-3">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-sky-300 pb-2">
+                    4.1 Network Standards and Protocols
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-sky-50 rounded-xl p-6 shadow-lg">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="card-icon">📜</span>
+                            <h3 class="text-xl font-bold text-gray-800">Network Protocol</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            A set of agreed rules for formatting, sending, and receiving data.
+                        </p>
+                    </div>
+                    <div class="bg-sky-50 rounded-xl p-6 shadow-lg">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="card-icon">🔗</span>
+                            <h3 class="text-xl font-bold text-gray-800">Application Layer</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            Protocols used by applications like web browsers (e.g., HTTP).
+                        </p>
+                    </div>
+                    <div class="bg-sky-50 rounded-xl p-6 shadow-lg">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="card-icon">📦</span>
+                            <h3 class="text-xl font-bold text-gray-800">Transport Layer</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            Breaks data into packets and reassembles them, using protocols like TCP.
+                        </p>
+                    </div>
+                    <div class="bg-sky-50 rounded-xl p-6 shadow-lg">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="card-icon">🗺️</span>
+                            <h3 class="text-xl font-bold text-gray-800">Internet Layer</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            Adds IP addresses and routes packets to their destination.
+                        </p>
+                    </div>
+                    <div class="bg-sky-50 rounded-xl p-6 shadow-lg">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="card-icon">🔌</span>
+                            <h3 class="text-xl font-bold text-gray-800">Physical Network Layer</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            Allows different network technologies to work together (e.g., Ethernet).
+                        </p>
+                    </div>
+                    <div class="bg-sky-50 rounded-xl p-6 shadow-lg">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="card-icon">🅰️➡️🔢</span>
+                            <h3 class="text-xl font-bold text-gray-800">Domain Name Server (DNS)</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            Translates human-readable domain names into IP addresses for routing.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Section: Network Capacity -->
+            <div class="md:col-span-2 lg:col-span-3 mt-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-sky-300 pb-2">
+                    4.2 Network Capacity
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-sky-50 rounded-xl p-6 shadow-lg">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="card-icon">🛣️</span>
+                            <h3 class="text-xl font-bold text-gray-800">Bandwidth</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            The maximum rate of data transfer at any one time, measured in Hertz (Hz).
+                        </p>
+                    </div>
+                    <div class="bg-sky-50 rounded-xl p-6 shadow-lg">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="card-icon">🚀</span>
+                            <h3 class="text-xl font-bold text-gray-800">Speed</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            The time it takes for data to be transferred, measured in Mbps.
+                        </p>
+                    </div>
+                    <div class="bg-sky-50 rounded-xl p-6 shadow-lg">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="card-icon">🗜️</span>
+                            <h3 class="text-xl font-bold text-gray-800">Data Compression</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            Reduces file size for efficient storage. Lossy removes data, Lossless does not.
+                        </p>
+                    </div>
+                    <div class="bg-sky-50 rounded-xl p-6 shadow-lg">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="card-icon">⚖️</span>
+                            <h3 class="text-xl font-bold text-gray-800">Net Neutrality</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            The principle that all data should be treated equally by ISPs, without giving preferential treatment.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section: Security -->
+            <div class="md:col-span-2 lg:col-span-3 mt-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-sky-300 pb-2">
+                    4.3 Security
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-sky-50 rounded-xl p-6 shadow-lg">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="card-icon">🔑</span>
+                            <h3 class="text-xl font-bold text-gray-800">Authentication</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            Basic security using unique usernames and passwords to verify a user's identity.
+                        </p>
+                    </div>
+                    <div class="bg-sky-50 rounded-xl p-6 shadow-lg">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="card-icon">📝</span>
+                            <h3 class="text-xl font-bold text-gray-800">Access Rights</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            Controls which files and resources a user can access and with what permissions.
+                        </p>
+                    </div>
+                    <div class="bg-sky-50 rounded-xl p-6 shadow-lg">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="card-icon">🔒</span>
+                            <h3 class="text-xl font-bold text-gray-800">Multi-factor Authentication</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            Uses multiple methods like biometrics or physical tokens to verify a user's identity for greater security.
+                        </p>
+                    </div>
+                    <div class="bg-sky-50 rounded-xl p-6 shadow-lg">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="card-icon">🛡️</span>
+                            <h3 class="text-xl font-bold text-gray-800">Firewall</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            Hardware or software that blocks unauthorized network access by inspecting incoming and outgoing traffic.
+                        </p>
+                    </div>
+                    <div class="bg-sky-50 rounded-xl p-6 shadow-lg">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="card-icon">🕵️</span>
+                            <h3 class="text-xl font-bold text-gray-800">Proxy Server</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            Acts as an intermediary to forward requests, masking the user's actual IP address and filtering content.
+                        </p>
+                    </div>
+                    <div class="bg-sky-50 rounded-xl p-6 shadow-lg">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="card-icon">🔐</span>
+                            <h3 class="text-xl font-bold text-gray-800">VPN</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            Secures public internet connections by creating a private network, often used for remote access.
+                        </p>
+                    </div>
+                    <div class="bg-sky-50 rounded-xl p-6 shadow-lg">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="card-icon">🔏</span>
+                            <h3 class="text-xl font-bold text-gray-800">Encryption</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            A process of securing data on networks by scrambling it into an unreadable format.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+</body>
+</html>
