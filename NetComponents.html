@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Components of Computing Networks</title>
+    <!-- Use a simple CDN for Tailwind CSS for quick styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font for a clean, modern look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Style for the emoji/icon to ensure it's large and stands out */
+        .card-icon {
+            font-size: 2.5rem;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 flex items-center justify-center p-4 min-h-screen">
+
+    <!-- Main container for the entire slide content -->
+    <div class="w-full max-w-6xl p-8 bg-white rounded-xl shadow-2xl">
+
+        <!-- Header section -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-extrabold text-gray-800 tracking-tight leading-tight">
+                3. Components of Computing Networks 🌐
+            </h1>
+            <p class="mt-4 text-xl text-gray-500">
+                Key hardware components that enable network functionality.
+            </p>
+        </div>
+
+        <!-- Grid layout for the component cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Card for Network Interface Card (NIC) -->
+            <div class="bg-sky-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
+                <div class="flex items-center space-x-4 mb-4">
+                    <span class="card-icon">🖥️</span>
+                    <h2 class="text-2xl font-bold text-gray-800">Network Interface Card (NIC)</h2>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    A NIC converts data into a digital signal, allowing a device to communicate over a network. It's the physical gateway for your computer to the network.
+                </p>
+            </div>
+
+            <!-- Card for Router -->
+            <div class="bg-sky-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
+                <div class="flex items-center space-x-4 mb-4">
+                    <span class="card-icon">📶</span>
+                    <h2 class="text-2xl font-bold text-gray-800">Router</h2>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    Essential for connecting to the internet, a router transfers data between different networks and efficiently forwards "data packets to their destination."
+                </p>
+            </div>
+
+            <!-- Card for Modem -->
+            <div class="bg-sky-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
+                <div class="flex items-center space-x-4 mb-4">
+                    <span class="card-icon">📡</span>
+                    <h2 class="text-2xl font-bold text-gray-800">Modem</h2>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    A modem is the bridge between your home network and your Internet Service Provider (ISP), converting digital data into analog signals and vice-versa.
+                </p>
+            </div>
+
+            <!-- Card for Wireless Access Point (WAP) -->
+            <div class="bg-sky-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
+                <div class="flex items-center space-x-4 mb-4">
+                    <span class="card-icon">📡</span>
+                    <h2 class="text-2xl font-bold text-gray-800">Wireless Access Point (WAP)</h2>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    WAPs are used to create a wireless local area network (WLAN). They are often placed strategically in large buildings like schools to ensure good coverage.
+                </p>
+            </div>
+
+            <!-- Card for Hub -->
+            <div class="bg-sky-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
+                <div class="flex items-center space-x-4 mb-4">
+                    <span class="card-icon">🔄</span>
+                    <h2 class="text-2xl font-bold text-gray-800">Hub</h2>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    A simple device that broadcasts all incoming data to all connected devices. It's easy to set up for a small number of devices but is less efficient due to high bandwidth usage.
+                </p>
+            </div>
+
+            <!-- Card for Switch -->
+            <div class="bg-sky-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
+                <div class="flex items-center space-x-4 mb-4">
+                    <span class="card-icon">↔️</span>
+                    <h2 class="text-2xl font-bold text-gray-800">Switch</h2>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    More intelligent than a hub, a switch sends data packets only to their specific destination, which makes it more efficient and secure for local area networks (LANs).
+                </p>
+            </div>
+
+            <!-- Card for Server -->
+            <div class="bg-sky-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 col-span-1 sm:col-span-2 lg:col-span-1 lg:col-start-2">
+                <div class="flex items-center space-x-4 mb-4">
+                    <span class="card-icon">📁</span>
+                    <h2 class="text-2xl font-bold text-gray-800">Server</h2>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    A server is a centralized, high-performance computer that provides data storage, resources, and services to other computers (clients) in a network.
+                </p>
+            </div>
+            
+        </div>
+
+    </div>
+
+</body>
+</html>
