@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The World Wide Web: Evolution and Current State</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .infographic-container {
+            width: 100%;
+            max-width: 1200px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 30px;
+            background: linear-gradient(to right, #4b6cb7, #182848);
+            border-radius: 15px;
+            color: white;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            border-radius: 15px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid #4b6cb7;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 15px;
+            color: #4b6cb7;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid #3498db;
+            position: relative;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card h3 {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card h3 i {
+            margin-right: 10px;
+            color: #3498db;
+        }
+        
+        .card p {
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        .card ul {
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+        
+        .card li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+            position: relative;
+        }
+        
+        .card li:before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            margin: 40px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: linear-gradient(to bottom, #3498db, #9b59b6);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+            width: 100%;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-start;
+        }
+        
+        .timeline-item:nth-child(even) {
+            justify-content: flex-end;
+        }
+        
+        .timeline-content {
+            width: 45%;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: #3498db;
+            border-radius: 50%;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -30px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -30px;
+        }
+        
+        .timeline-content h3 {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-content .period {
+            color: #3498db;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .tech-icons {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .tech-icon {
+            text-align: center;
+            padding: 20px;
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 15px;
+            width: 180px;
+            margin: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .tech-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        .tech-icon i {
+            font-size: 3.5rem;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        .tech-icon h4 {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .tech-icon p {
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+            background: linear-gradient(to right, #2c3e50, #4b6cb7);
+            border-radius: 15px;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                justify-content: flex-start;
+                padding-left: 60px;
+            }
+            
+            .timeline-content {
+                width: 100%;
+            }
+            
+            .timeline-content::before {
+                left: -30px;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic-container">
+        <div class="header">
+            <h1>The World Wide Web: Evolution and Current State</h1>
+            <p>Understanding the distinction between the Internet and the Web, and exploring the journey from Web 1.0 to Web 3.0</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-network-wired"></i> Internet vs. World Wide Web</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3><i class="fas fa-globe"></i> Internet</h3>
+                    <p>The underlying "global collection of networks and networking technologies."</p>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-code"></i> World Wide Web (WWW)</h3>
+                    <p>The "collection of websites and web services that are hosted on web servers and identified by their URL (uniform resource locator), and accessed through a web browser."</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-cogs"></i> Web Interoperability Technologies</h2>
+            <div class="tech-icons">
+                <div class="tech-icon">
+                    <i class="fas fa-link"></i>
+                    <h4>URL</h4>
+                    <p>Uniform Resource Locator - The unique address for each web resource.</p>
+                </div>
+                
+                <div class="tech-icon">
+                    <i class="fas fa-lock"></i>
+                    <h4>HTTP/HTTPS</h4>
+                    <p>Hypertext Transfer Protocol/Secure - Determines how web resources are transmitted. HTTPS encrypts sensitive data.</p>
+                </div>
+                
+                <div class="tech-icon">
+                    <i class="fas fa-file-code"></i>
+                    <h4>HTML</h4>
+                    <p>Hyper Text Markup Language - The format of web pages, enabling documents to be displayed and linked.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-history"></i> Evolution of the Internet and the Web</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="period">1969–2000</span>
+                        <h3>Early Days</h3>
+                        <ul>
+                            <li>The internet began with ARPANET in 1969</li>
+                            <li>Connected academic and military institutions</li>
+                            <li>Introduced TCP/IP protocol</li>
+                            <li>WWW invented by Sir Tim Berners-Lee in 1989</li>
+                            <li>Expanded from 130 websites (1993) to 100,000 (1996)</li>
+                            <li>World Wide Web Consortium (W3C) formed to ensure interoperability</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="period">2000–2020</span>
+                        <h3>Expansion of the Web</h3>
+                        <ul>
+                            <li><strong>Web 1.0:</strong> Static websites requiring programmers for changes</li>
+                            <li><strong>Web 2.0:</strong> The "social web" enabling user-generated content</li>
+                            <li>No coding expertise required for content creation</li>
+                            <li>Introduced social media, blogging, podcasting, and social bookmarking</li>
+                            <li>Dynamic, interactive user experiences</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="period">2020–Present</span>
+                        <h3>Web 3.0</h3>
+                        <ul>
+                            <li>Focuses on "generating a greater understanding of the meaning of the words being used"</li>
+                            <li>Leverages artificial intelligence and natural language processing</li>
+                            <li>Supports interactive 3D graphics</li>
+                            <li>Aligns with growth of the Internet of Things (IoT)</li>
+                            <li>Semantic web technologies</li>
+                            <li>Decentralized applications</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-microchip"></i> The Internet of Things (IoT)</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3><i class="fas fa-lightbulb"></i> What is IoT?</h3>
+                    <p>Refers to "all of the devices that are connected to the internet" beyond traditional computers and phones.</p>
+                    <ul>
+                        <li>Smart appliances</li>
+                        <li>Autonomous vehicles</li>
+                        <li>Smart lightbulbs</li>
+                        <li>Wearable devices</li>
+                        <li>Industrial sensors</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-database"></i> How IoT Works</h3>
+                    <p>IoT devices use sensors to collect and share data, aiming for assistance and efficiency.</p>
+                    <ul>
+                        <li>Continuous data collection</li>
+                        <li>Cloud processing and analysis</li>
+                        <li>Automated responses and actions</li>
+                        <li>Remote monitoring and control</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-shield-alt"></i> Concerns</h3>
+                    <p>IoT raises significant privacy and security challenges:</p>
+                    <ul>
+                        <li>Data privacy issues</li>
+                        <li>Security vulnerabilities</li>
+                        <li>Lack of standardization</li>
+                        <li>Potential for misuse</li>
+                        <li>Network bandwidth demands</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <h3>The World Wide Web continues to evolve, shaping how we interact with information and each other</h3>
+            <p>From static pages to semantic understanding, the web remains humanity's most powerful information-sharing platform</p>
+        </div>
+    </div>
+</body>
+</html>
