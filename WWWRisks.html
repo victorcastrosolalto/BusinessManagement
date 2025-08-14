@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internet Dilemmas: Risks and Consequences</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #f0f8ff;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        header {
+            background: linear-gradient(90deg, #4b6cb7, #182848);
+            padding: 30px;
+            text-align: center;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .intro {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            color: #e6f7ff;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 30px;
+        }
+        
+        .section {
+            background: rgba(30, 30, 60, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(100, 150, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #4b6cb7;
+        }
+        
+        .section-title i {
+            font-size: 2.5rem;
+            color: #4b6cb7;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            color: #4fc3f7;
+        }
+        
+        .risk-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .risk-card {
+            background: rgba(40, 40, 80, 0.6);
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid #4b6cb7;
+        }
+        
+        .risk-card.critical {
+            border-left: 4px solid #ff5252;
+        }
+        
+        .risk-card.high {
+            border-left: 4px solid #ff9800;
+        }
+        
+        .risk-card.medium {
+            border-left: 4px solid #4caf50;
+        }
+        
+        .risk-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .risk-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(75, 108, 183, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            color: #bb86fc;
+        }
+        
+        .risk-content {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+        
+        .stat {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 10px 0;
+            display: inline-block;
+            color: #81d4fa;
+        }
+        
+        .consequence-list {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .consequence-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        
+        .consequence-icon {
+            min-width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(75, 108, 183, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+        }
+        
+        .consequence-content h3 {
+            margin-bottom: 10px;
+        }
+        
+        .sub-point {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        
+        .highlight {
+            color: #ff9800;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .risk-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 500px) {
+            header {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>7. Internet Dilemmas: Risks and Consequences</h1>
+            <p class="intro">The widespread use of networks and the internet introduces various risks and ethical dilemmas, requiring both individual and professional security measures.</p>
+        </header>
+        
+        <div class="main-content">
+            <!-- Risks Section -->
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-shield-alt"></i>
+                    <h2>7.1 Understanding the Risks to Data</h2>
+                </div>
+                
+                <div class="risk-grid">
+                    <div class="risk-card critical">
+                        <div class="risk-header">
+                            <div class="risk-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3>Spamming</h3>
+                        </div>
+                        <div class="risk-content">
+                            <p>Sending unsolicited emails, primarily for advertising.</p>
+                            <div class="stat">In March 2021, "45% of email traffic was spam."</div>
+                        </div>
+                    </div>
+                    
+                    <div class="risk-card high">
+                        <div class="risk-header">
+                            <div class="risk-icon">
+                                <i class="fas fa-user-secret"></i>
+                            </div>
+                            <h3>Hacking</h3>
+                        </div>
+                        <div class="risk-content">
+                            <p>"Unauthorized access to a computer or network."</p>
+                            <div class="sub-point">
+                                <p><span class="highlight">Social Engineering:</span> Tricking users into revealing credentials. Example: Lithuanian national defrauded Google and Facebook of US$100 million.</p>
+                            </div>
+                            <div class="sub-point">
+                                <p><span class="highlight">Website/Network Penetration:</span> Gaining access to backend databases.</p>
+                            </div>
+                            <div class="sub-point">
+                                <p><span class="highlight">Exploiting Security Flaws:</span> Taking advantage of inadequate protection. Example: "Log4J attack" in 2021.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="risk-card high">
+                        <div class="risk-header">
+                            <div class="risk-icon">
+                                <i class="fas fa-virus"></i>
+                            </div>
+                            <h3>Viruses</h3>
+                        </div>
+                        <div class="risk-content">
+                            <p>Malicious software attached to programs or emails, activated upon execution.</p>
+                            <div class="stat">2016 Bangladesh Bank Hack: North Korean Lazarus group utilized virus-laden CV attachment.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="risk-card critical">
+                        <div class="risk-header">
+                            <div class="risk-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <h3>Ransomware</h3>
+                        </div>
+                        <div class="risk-content">
+                            <p>Malware that locks users out and demands payment.</p>
+                            <div class="stat">WannaCry (May 2017): Affected 230,000 computers globally, causing US$4B in losses.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="risk-card medium">
+                        <div class="risk-header">
+                            <div class="risk-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <h3>DDoS Attacks</h3>
+                        </div>
+                        <div class="risk-content">
+                            <p>Overwhelming a server with connection requests from bots.</p>
+                            <div class="stat">Amazon Web Services experienced a major DDoS attack in 2020.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Consequences Section -->
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h2>7.2 Consequences of the Risks to Data</h2>
+                </div>
+                
+                <div class="consequence-list">
+                    <div class="consequence-item">
+                        <div class="consequence-icon">
+                            <i class="fas fa-id-card"></i>
+                        </div>
+                        <div class="consequence-content">
+                            <h3>Identity Theft</h3>
+                            <p>"When someone steals your personal information with the intention of committing fraud."</p>
+                            <div class="stat">In 2020, identity theft cost Americans US$56 billion.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="consequence-item">
+                        <div class="consequence-icon">
+                            <i class="fas fa-mask"></i>
+                        </div>
+                        <div class="consequence-content">
+                            <h3>Anonymity</h3>
+                            <p>While offering protection, it also empowers those with malicious intent.</p>
+                            <div class="sub-point">
+                                <p><span class="highlight">Internet Trolls:</span> "People who leave intentionally provocative or offensive messages online." Studies show online harassment costs governments billions in health costs and lost income.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="consequence-item">
+                        <div class="consequence-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="consequence-content">
+                            <h3>Data Retention and the Right to be Forgotten</h3>
+                            <p>Questions arise about data security after services are no longer used.</p>
+                            <p>GDPR in Europe grants citizens the "right to request to have their data erased" under specific circumstances.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="consequence-item">
+                        <div class="consequence-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="consequence-content">
+                            <h3>Surveillance</h3>
+                            <p>The close monitoring of individuals or groups using technologies like CCTV, facial recognition, drones, and smart devices.</p>
+                            <div class="stat">A 2020 study found "16 out of the top 20 most surveilled cities are in China."</div>
+                            <p>Government monitoring (e.g., COVID-19 trace apps) raises significant privacy concerns.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
